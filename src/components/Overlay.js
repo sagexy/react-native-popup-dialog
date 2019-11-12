@@ -27,14 +27,29 @@ class Overlay extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps: OverlayType) {
+//   componentWillReceiveProps(nextProps: OverlayType) {
+//     const {
+//       showOverlay,
+//       useNativeDriver,
+//       animationDuration: duration,
+//     } = this.props;
+//     if (showOverlay !== nextProps.showOverlay) {
+//       const toValue = nextProps.showOverlay ? nextProps.opacity : 0;
+//       Animated.timing(this.state.opacity, {
+//         toValue,
+//         duration,
+//         useNativeDriver,
+//       }).start();
+//     }
+//   }
+  componentDidUpdate(prevProps, prevState) {
     const {
       showOverlay,
       useNativeDriver,
       animationDuration: duration,
-    } = this.props;
-    if (showOverlay !== nextProps.showOverlay) {
-      const toValue = nextProps.showOverlay ? nextProps.opacity : 0;
+    } = prevProps;
+    if (showOverlay !== this.props.showOverlay) {
+      const toValue = this.props.showOverlay ? this.props.opacity : 0;
       Animated.timing(this.state.opacity, {
         toValue,
         duration,
